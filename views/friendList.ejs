@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/navbar.css" rel="stylesheet" type="text/css">
+    <link href="css/friendList.css" rel="stylesheet" type="text/css">
+    <link href="css/search_bar.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <!-- save data -->
+
+    <div class="container">
+        <hr class="line">
+        <ul class="friends">
+            <li class="nav-li-inline groupList">
+                <input id="searchbar" onkeyup="search_animal()" type="text"
+                    name="search" placeholder="Search friends..">
+                    <ol id='list'>
+                        <li class="animals">Cat</li>
+                        <li class="animals">Dog</li>
+                        <li class="animals">Elephant</li>
+                        <li class="animals">Fish</li>
+                        <li class="animals">Gorilla</li>
+                        <li class="animals">Monkey</li>
+                        <li class="animals">Turtle</li>
+                        <li class="animals">Whale</li>
+                        <li class="animals">Aligator</li>
+                        <li class="animals">Donkey</li>
+                        <li class="animals">Horse</li>
+                    </ol>
+            </li>
+            <li class="nav-li-inline invitees">
+                <div id="invitees">
+                    <span>Pending invitees</span>
+                    <ul id="inviteesList">
+                        <li id="noPending">No pending invitees</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>    
+    
+    <!-- data storage -->
+    <!-- <body onload="myFunc(`<%= friendList %>`)"> -->
+    <span id="store" data-friendlist="<%= friendList %>"></span>
+    <script>
+
+        // hamburger section
+        const hamburger = document.querySelector(".ham");  
+        const navsub = document.querySelector(".nav-sub");  
+        hamburger.addEventListener('click', () => {  
+            hamburger.classList.toggle("change");
+            navsub.classList.toggle("nav-change");
+        });
+
+
+        // JavaScript code for search bar
+        function search_animal() {
+            let input = document.getElementById('searchbar').value
+            input=input.toLowerCase();
+            let x = document.getElementsByClassName('animals');
+        
+            for (i = 0; i < x.length; i++) { 
+                if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    x[i].style.display="none";
+                }
+                else {
+                    x[i].style.display="list-item";                 
+                }
+            }
+        }
+
+
+        const friendList=document.getElementById('list');
+        var friendListObj=document.getElementById('store').dataset.friendlist;
+        //friendListObj = friendListObj.replace(/(\r\n|\n|\r)/gm, "");
+        //friendListObj = friendListObj.replace(/(_)/gm, "");
+        console.log("fr ",friendListObj,typeof(friendListObj));
+        var stringObjectArray=[];
+        var word="";
+        for(var i=0;i<friendListObj.length;i++){
+            word+=friendListObj[i];
+            if(friendListObj[i] == '}'){
+                stringObjectArray.push(word);
+                word="";i++;
+            }
+        }
+        if(word.length > 0){
+            stringObjectArray.push(word);
+        }
+        console.log("string array of objects ",stringObjectArray);
+        // function give_ele(ele,str){
+        //     var ind=str.indexOf(ele);
+        //     if(ind<0)return "";
+        //     ind+=str.length+1; // +1 for : 
+        //     var val="";
+        //     if(ele == "_id"){
+        //         for(;ind<str.length;ind++){
+        //             if(str[ind] === "'" || str[ind] === '"'){
+        //                 ind++;break;
+        //             }
+        //         }
+        //         for(;ind<str.length;ind++){
+        //             if(str[ind] === "'" || str[ind] === '"'){
+        //                 break;
+        //             }
+        //             val+=str[i];
+        //         }
+        //     }else{
+        //         for(;ind<str.length;ind++){
+        //             if(str[ind] === ","){
+        //                 break;
+        //             }
+        //             val+=str[i];
+        //         }
+
+        //     }
+        // }
+
+        for(var i=0;i<stringObjectArray.length;i++){
+            var stringObject=stringObjectArray[i];
+            stringObject=stringObject.replace(/(\r\n|\n|\r)/gm, "");
+            console.log("see single object ",stringObject);
+            var evaluatedObj=eval(stringObject);
+            console.log("see eval one ",evaluatedObj);
+            // var jsonObject=JSON.parse(stringObject);
+            // console.log("see objects json ",jsonObject);
+            // console.log("see objects str ",stringObject,typeof(stringObject));
+        }
+    </script>
+</body>
+</html>

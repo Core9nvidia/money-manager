@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body{
+            margin:0px;
+            padding:0px;
+            margin-top:-15px;
+        }
+        nav{
+            min-height:65px;
+            vertical-align: middle;
+            height:fit-content;
+        }
+        ul{
+            list-style: none;
+        }
+        #logo{
+            height: 60px;
+            width: 60px;
+            float:left;
+            margin-right:4px;
+        }
+        .nav-li-inline{
+            display: inline-block;
+            text-align: center;
+        }
+        .left{
+            float:left;
+        }
+        .right{
+            float:right;
+        }
+        #logoName{
+            font-size: 2.5em;
+            margin-left: 4px;
+            color:rgb(33,92,157);
+        }
+        .button{
+            height:35px;
+            min-width: 80px;
+            margin:10px;
+            vertical-align: middle;
+            width:fit-content;
+            font-weight: bolder;
+            border:0px;
+            background-color: white;
+        }
+        a:link{
+            text-decoration: none;
+        }
+        #icon1,#icon2{
+            margin:6px;
+            font-weight: bolder;
+            font-size:large
+        }
+        #icon2{
+            margin-bottom: -10px;
+            padding: 0;
+        }
+        #icon1{
+            margin-bottom: 0px;
+        }
+        .icon{
+            margin:2px;
+            align-self: baseline;
+            margin-bottom: -2px;
+        }
+        #name{
+            font-size: large;
+            font-weight: bold;
+        }
+        .ham{
+            padding:5px;  
+            cursor:pointer;  
+            display:inline;
+        }
+        .list-item {  
+            padding:2px;  
+            margin:3px;
+            list-style:none;
+            border:0.5px solid rgb(87, 82, 82);  
+        }  
+        .nav-link{  
+            color:inherit;  
+            text-decoration:none; 
+            align-items: center; 
+        }
+        .nav-sub{  
+            position:absolute;  
+            right:0px; 
+            margin-top:10px; 
+            flex-direction:column;  
+            /* background-color:rgba(236, 221, 221, 0.75);   */
+            /* border-radius:0px 0px 0px 20px;   */
+            transition:transform 0.3s ease-in;  
+            transform:translate(100%);  
+            width:fit-content;
+        }  
+        .nav-change{  
+            transform:translate(0%);  
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="left nav-li-inline">
+                <a href="/">
+                    <div class="logo-image">
+                        <img id="logo" src="logo1.png" class="img-fluid">
+                    </div>
+                </a>
+            </li>
+            <li class="left nav-li-inline" id="logoName">Money Manager</li>
+            <li class="right button nav-li-inline" id="btn2"><i class="fa fa-solid fa-user" id="icon1"></i>
+                <span id="name"><%= name %></span>
+                <span class="ham">
+                    <i class="fa fa-angle-down" id="icon2"></i>
+                </span>
+                <ul class="nav-sub">  
+                    <li class="list-item"><a href="/profile" class="nav-link"><i class="fa fa-solid fa-address-card icon"></i>Profile</a></li>  
+                    <li class="list-item"><a href="/recentActivity" class="nav-link">Recent Activity</a></li>  
+                    <li class="list-item"><a href="/groups" class="nav-link">My Groups</a></li>  
+                    <li class="list-item"><a href="/createGroup" class="nav-link">Create a group</a></li>  
+                    <li class="list-item"><a href="/logout" class="nav-link"><i class="fa-regular fa-right-from-bracket"></i>Sign Out</a></li>  
+                </ul></li>
+            
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+    </div>    
+    <script>
+        const hamburger = document.querySelector(".ham");  
+        const navsub = document.querySelector(".nav-sub");  
+        hamburger.addEventListener('click', () => {  
+            hamburger.classList.toggle("change");
+            navsub.classList.toggle("nav-change");
+        });
+    </script>
+</body>
+</html>

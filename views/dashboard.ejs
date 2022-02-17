@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/navbar.css" rel="stylesheet" type="text/css">
+    <style>
+        .container{
+            margin-left:10%;
+            margin-right:10%;
+        }
+        hr.line{
+            border-top:1px solid rgb(114, 111, 111);
+        }
+        .dashboard{
+            font-size: larger;
+            height: 20px;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+        #settleup{
+            height: 20px;
+            margin-bottom: 3px;
+        }
+        li.balanceSection{
+            width: 23%;
+            background-color: rgb(198, 243, 230);
+            border-radius: 6px;
+            height:60px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <!-- save data -->
+    <span id="dataStore" data-totalyoupaid="<%= totalYouPaid %>" data-totalyourshare="<%= totalYourShare %>"
+        data-totalyouareowed= "<%= totalYouAreOwed %>" data-totalyouowe= "<%= totalYouOwe %>"></span>
+
+    <div class="container">
+        <ul id="dashboard-section">
+            <li class="left dashboard">Dashboard</li>
+            <li class="right"><a href="/settleup" id="settleup_a"><button id="settleup">Settle Up</button></a></li>
+        </ul>
+        <br>
+        <hr class="line">
+        <ul>
+            <li class="balanceSection nav-li-inline">
+                <span>Your Total Share</span><br>
+                <span id="totalYourShare">Rs. 0</span>
+            </li>
+            <li class="balanceSection nav-li-inline">
+                <span>Total You Paid</span><br>
+                <span id="totalYouPaid">Rs. 0</span>
+            </li>
+            <li class="balanceSection nav-li-inline">
+                <span>Total you owe</span><br>
+                <span id="totalYouOwe">Rs. 0</span>
+            </li>
+            <li class="balanceSection nav-li-inline">
+                <span>Total you are owed</span><br>
+                <span id="totalYouAreOwed">Rs. 0</span>
+            </li>
+        </ul>
+        <br>
+        <hr class="line">
+    </div>    
+    <script>
+        var dataStore=document.getElementById('dataStore');
+        const totalYourShare=document.getElementById('totalYourShare');
+        const totalYouPaid= document.getElementById('totalYouPaid');
+        const totalYouOwe= document.getElementById('totalYouOwe');
+        const totalYouAreOwed = document.getElementById('totalYouAreOwed');
+
+        //totalYourShare.innerHTML="Rs. ${DatatotalYourShare.dataset.totalYourShare}";
+        console.log("from backend : ",dataStore.dataset.totalyoupaid);
+        console.log("from backend : ",dataStore.dataset.ch);
+        totalYouPaid.innerHTML=dataStore.dataset.totalyoupaid;
+        totalYourShare.innerHTML=dataStore.dataset.totalyourshare;
+        totalYouOwe.innerHTML=dataStore.dataset.totalyouowe;
+        totalYouAreOwed.innerHTML=dataStore.dataset.totalyouareowed;
+
+
+        
+        // hamburger section
+        const hamburger = document.querySelector(".ham");  
+        const navsub = document.querySelector(".nav-sub");  
+        hamburger.addEventListener('click', () => {  
+            hamburger.classList.toggle("change");
+            navsub.classList.toggle("nav-change");
+        });
+    </script>
+</body>
+</html>

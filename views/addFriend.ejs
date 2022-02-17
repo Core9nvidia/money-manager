@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/navbar.css" rel="stylesheet" type="text/css">
+    <link href="/css/addFriend.css" rel="stylesheet" type="text/css">
+    <script>
+        const response="<%= response %>";
+    </script>
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="container">
+        
+        <form action="/addfriend" method="POST">
+            <label class="ele" for="email">Enter email ... </label>
+            <input class="ele" type="email" id="email" name="email" placeholder="example@gmail.com" required>
+            <button class="ele" type="submit">Add friend</button>
+        </form>
+        <br><br>
+        <span class="ele" id="showMessage"></span>
+    </div>
+    <script>
+        if(response.length > 0){
+            const showMessage=document.getElementById('showMessage');
+            showMessage.innerHTML=response;
+        }
+        // hamburger section
+        const hamburger = document.querySelector(".ham");  
+        const navsub = document.querySelector(".nav-sub");  
+        hamburger.addEventListener('click', () => {  
+            hamburger.classList.toggle("change");
+            navsub.classList.toggle("nav-change");
+        });
+    </script>
+</body>
+</html>

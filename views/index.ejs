@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        nav{
+            height:100px;
+            vertical-align: middle;
+            align-items: center;
+            align-self: center;
+        }
+        ul{
+            list-style: none;
+        }
+        #logo{
+            height: 70px;
+            width: 100px;
+            float:left;
+            margin-right:20px;
+            margin-top:10px;
+            margin-left:10px;
+            margin-bottom:-10px;
+        }
+        li{
+            display: inline-block;
+            text-align: center;
+        }
+        .left{
+            float:left;
+        }
+        .right{
+            float:right;
+        }
+        #Splitwise{
+            font-size: 4em;
+            margin-left: 4px;
+            color:rgb(33,92,157);
+            margin-bottom: 30px;
+        }
+        .container{
+            margin-top: 40px;
+            text-align: center;
+            align-items: center;
+        }
+        #text{
+            font-size: 2.5em;
+            color:rgb(33,92,157);
+        }
+        #glogo{
+            height:fit-content;
+            width: fit-content;
+        }
+        #GoogleLogo{
+            margin: 15px;
+            height:190px;
+            width: 190px;
+        }
+        #GoogleLogo:hover{
+            border:5px solid  rgb(23, 25, 27);
+            color:rgb(33,92,157);
+            box-shadow: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" class="left">
+                    <div class="logo-image">
+                        <img id="logo" src="logo1.png" class="img-fluid">
+                    </div>
+                </a>
+            </li>
+            <li id="Splitwise">Money Manager</li>
+        </ul>
+        
+    </nav>
+    <span id="store" data-response="<%= response %>"></span>
+    <div class="container">
+        <div id="text">
+            Login/SignUp to your Account
+        </div>
+        <div id="gLogo"><a href="/auth/google"><img id="GoogleLogo" src="google_black.png" class="img-fluid"></a></div>
+    </div>
+    <script>
+        var response=document.getElementById('store').dataset.response;
+        console.log("here it ",response);
+        if(response.length > 0){
+            window.alert(response);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/navbar.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            overflow-y: scroll;
+        }
+        .container{
+            margin-left:10%;
+            margin-right:10%;
+        }
+
+    </style>
+    <link href="css/search_bar.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <!-- save data -->
+
+    <div class="container">
+        
+    </div>    
+    <script>
+        // hamburger section
+        const hamburger = document.querySelector(".ham");  
+        const navsub = document.querySelector(".nav-sub");  
+        hamburger.addEventListener('click', () => {  
+            hamburger.classList.toggle("change");
+            navsub.classList.toggle("nav-change");
+        });
+    </script>
+</body>
+</html>

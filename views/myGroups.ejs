@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/navbar.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            overflow-y: scroll;
+        }
+        .container{
+            margin-left:10%;
+            margin-right:10%;
+        }
+        hr.line{
+            border-top:1px solid rgb(114, 111, 111);
+        }
+        .dashboard{
+            font-size: larger;
+            height: 30px;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+        #settleup{
+            height: 20px;
+            margin-bottom: 3px;
+        }
+        .groups li{
+            width: 45%;
+            border-radius: 6px;
+            height:fit-content;
+            text-align: center;
+            margin-top:3px;
+            vertical-align: top;
+        }
+        .animals{
+            height:18px;
+            background-color: rgb(29,154,200);
+            border-radius: 6px;
+            margin:3px;
+            width:100%;
+        }
+
+    </style>
+    <link href="css/search_bar.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <!-- save data -->
+
+    <div class="container">
+        <hr class="line">
+        <ul class="groups">
+            <li class="nav-li-inline groupList">
+                <input id="searchbar" onkeyup="search_animal()" type="text"
+                    name="search" placeholder="Search groups..">
+                    <ol id='list'>
+                        <li class="animals">Cat</li>
+                        <li class="animals">Dog</li>
+                        <li class="animals">Elephant</li>
+                        <li class="animals">Fish</li>
+                        <li class="animals">Gorilla</li>
+                        <li class="animals">Monkey</li>
+                        <li class="animals">Turtle</li>
+                        <li class="animals">Whale</li>
+                        <li class="animals">Aligator</li>
+                        <li class="animals">Donkey</li>
+                        <li class="animals">Horse</li>
+                    </ol>
+            </li>
+            <li class="nav-li-inline invitees">
+                <div id="invitees">
+                    <span>Pending invitees</span>
+                    <ul id="inviteesList">
+                        <li id="noPending">No pending invitees</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>    
+    
+    <!-- data storage -->
+    <script>
+        
+        function search_animal() {
+            let input = document.getElementById('searchbar').value
+            input=input.toLowerCase();
+            let x = document.getElementsByClassName('animals');
+        
+            for (i = 0; i < x.length; i++) { 
+                if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    x[i].style.display="none";
+                }
+                else {
+                    x[i].style.display="list-item";                 
+                }
+            }
+        }
+
+        // hamburger section
+        const hamburger = document.querySelector(".ham");  
+        const navsub = document.querySelector(".nav-sub");  
+        hamburger.addEventListener('click', () => {  
+            hamburger.classList.toggle("change");
+            navsub.classList.toggle("nav-change");
+        });
+    </script>
+</body>
+</html>
